@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html style="width:100%;height:100%;">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="img.svg" />
+
+    <script>
+      document.onload = () => {
+        window.content = document.getElementById("content");
+        window.logo = document.getElementById("logo");
+        window.text = document.getElementById("text");
+      };
+
+      var Mode = {
+        Vertical: 0,
+        Horizontal: 1
+      };
+      var currentMode = Mode.Horizontal;
+      toggleTheme = e => {
+        switchTheme(e.checked);
+      };
+      toggleMode = () => {
+        switchType(
+          currentMode == Mode.Horizontal ? Mode.Vertical : Mode.Horizontal
+        );
+      };
+
+      switchTheme = isDark => {
+        if (!content || !logo || !text) {
+          console.log("skip");
+          return;
+        }
+        if (isDark) {
+          content.style.backgroundColor = "#0a0754";
+          logo.src = "white.svg";
+          text.src = "logoText-w.png";
+        } else {
+          content.style.backgroundColor = "#fff";
+          logo.src = "img.svg";
+          text.src = "logoText-b.png";
+        }
+      };
+
+      switchType = mode => {
+        if (!content || !logo || !text) {
+          console.log("skip");
+          return;
+        }
+        switch (mode) {
+          case Mode.Horizontal:
+            content.style.flexDirection = "column";
+            text.style.marginTop = "-100px";
+            text.style.marginBottom = "0";
+            break;
+          case Mode.Vertical:
+            content.style.flexDirection = "row";
+            text.style.marginTop = "0";
+            text.style.marginBottom = "-170px";
+            break;
+        }
+        currentMode = mode;
+      };
+    </script>
+  </head>
+  <body
+    style="width:100%; height:100%; padding:0; margin: 0; display: flex; flex-direction:column;"
+  >
+    <div
+      id="content"
+      style="display: flex; justify-content: center; flex-direction: column; height: 100%;"
+    >
+      <img
+        id="logo"
+        src="img.svg"
+        style="
+        width: 25em; 
+        align-self:center;
+        "
+      />
+      <img
+        id="text"
+        src="logoText-b.png"
+        style="
+    width: 30em; 
+    align-self:center;
+    margin-top:-100px;
+    "
+      />
+    </div>
+
+    <div style="margin: auto; margin-bottom: 0;">
+      <button onclick="javascript:toggleMode()">Toggle</button>
+      <input type="checkbox" onclick="javascript:toggleTheme(this)" />
+      <span>Dark Theme</span>
+    </div>
+  </body>
+</html>
