@@ -49,18 +49,21 @@
         switch (mode) {
           case Mode.Horizontal:
             content.style.flexDirection = "column";
-            text.style.marginTop = "-100px";
+            text.style.marginTop = "-10vmin";
             text.style.marginBottom = "0";
             break;
           case Mode.Vertical:
             content.style.flexDirection = "row";
             text.style.marginTop = "0";
-            text.style.marginBottom = "-170px";
+            text.style.marginBottom = "-17vmin";
             break;
         }
         currentMode = mode;
       };
     </script>
+    <style>
+
+    </style>
   </head>
   <body
     style="width:100%; height:100%; padding:0; margin: 0; display: flex; flex-direction:column;"
@@ -73,7 +76,7 @@
         id="logo"
         src="img.svg"
         style="
-        width: 25em; 
+        width: 50vmin; 
         align-self:center;
         "
       />
@@ -81,9 +84,9 @@
         id="text"
         src="logoText-b.png"
         style="
-    width: 30em; 
+    width: 50vmin; 
     align-self:center;
-    margin-top:-100px;
+    margin-top:-10vmin;
     "
       />
     </div>
